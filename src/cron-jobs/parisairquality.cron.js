@@ -14,8 +14,8 @@ cron.schedule('* * * * *', async () => {
     try {
         const response = await axios.get(apiUrl, {
             params: {
-                lat: 52.519209,
-                lng: 13.405907
+                lat: 48.856613,
+                lng: 2.352222
             }
         });
 
