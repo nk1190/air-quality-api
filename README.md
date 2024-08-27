@@ -58,7 +58,8 @@ This project provides various APIs related to air quality data. It includes fetc
     `timestamp` datetime DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
     ) ENGINE=InnoDB;
-
+    ```
+   You can use the committed .sql file for database tables creation and sample data insertion <br><br>
 5. **Start the application:**
    ```bash
    npm start
