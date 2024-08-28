@@ -1,6 +1,7 @@
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
+// init swagger API documentation 
 const swaggerOptions = {
   swaggerDefinition: {
     openapi: '3.0.0',
@@ -20,7 +21,7 @@ const swaggerOptions = {
       ]
     }
   },
-  apis: ['./src/routes/*.js', './src/models/*.js'] // Path to the API docs
+  apis: ['./src/routes/*.js', './src/models/*.js'] 
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);

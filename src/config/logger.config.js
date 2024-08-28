@@ -15,17 +15,22 @@ const logger = createLogger({
         logFormat
     ),
     transports: [
-        new transports.Console(), // Log to the console
+        // Log to the console
+        new transports.Console(),
+        
+        // Log all the logs (error, info, warn) to 'all-log' file dated with the current date 
         new transports.DailyRotateFile({
             filename: 'logs/all-logs-%DATE%.log',
             datePattern: 'YYYY-MM-DD',
             maxFiles: '1d'
         }),
+
+        // Log all the errors to a seprated file 'error-' file dated with the current date 
         new transports.DailyRotateFile({
             filename: 'logs/error-%DATE%.log',
             datePattern: 'YYYY-MM-DD',
             maxFiles: '1d',
-            level: 'error' // Log only errors to this file
+            level: 'error' 
         })
     ]
 });

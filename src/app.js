@@ -4,12 +4,14 @@ const dbConnection = require('./config/db.config');
 const logger = require('./config/logger.config');
 const swaggerSetup = require('./config/swagger.config');
 
+
+// import the routes 
 const airQualityRoutes = require('./routes/airquality.route');
 
 // Import the CRON job
 require('./cron-jobs/parisairquality.cron'); 
 
-
+// Setup Swagger API documentation 
 swaggerSetup(app);
 
 // Middleware
@@ -28,7 +30,7 @@ app.listen(PORT, () => {
 });
 
 
-// Close the connection when the process ends
+// Close the database connection when the process ends
 process.on('SIGINT', () => {
     dbConnection.end(err => {
         if (err) {

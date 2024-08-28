@@ -4,17 +4,20 @@ const airQualityLogModel = require('../models/airqualitylog.model');
 const logger = require('../config/logger.config');
 
 
-// Replace with your actual API URL if necessary
+// air-qulaity retriever API URL
 const apiUrl = 'http://localhost:3000/api/air-quality';
 
-// CRON Job to run every minute
+// CRON Job to run every minute 
 cron.schedule('* * * * *', async () => {
+
     logger.info('Fetching air quality data for Paris...');
 
     try {
+
+        // Call the API and wait for the retrieved response 
         const response = await axios.get(apiUrl, {
             params: {
-                lat: 48.856613,
+                lat: 48.856613, // Paris Lat and Lng values
                 lng: 2.352222
             }
         });
@@ -22,6 +25,7 @@ cron.schedule('* * * * *', async () => {
         const data = response.data;
         logger.info('Air quality data for Paris response: '+JSON.stringify(data));
 
+        // Parse the retrieved air pollution data 
         const airQualityData = {
             city: data.city,
             state: data.state,
@@ -33,6 +37,7 @@ cron.schedule('* * * * *', async () => {
             timestamp: new Date()
         };
 
+        // Insert the parsed data into the database 
         airQualityLogModel.insertNewLog(airQualityData, (err, data) => {
             if (err) {
                 logger.error('Error saving air quality data: '+err.message);
