@@ -28,9 +28,7 @@ This project provides various APIs related to air quality data. It includes fetc
 
 2. **Install dependencies:**
    ```bash
-   npm install express axios node-cron mysql2 dotenv
-   npm install winston winston-daily-rotate-file
-   npm install swagger-jsdoc swagger-ui-express
+   npm install
    
 3. **Set up environment variables:**
    - Create a `.env` file in the root directory and add the following:
